@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.soprodivino.visitante.enums.TipoIrmao;
-
 @Entity
 public class Irmao implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -31,21 +29,19 @@ public class Irmao implements Serializable{
 	@Column(name = "CRENTE")
 	private boolean crente;
 	
-	@Column(name = "TIPO_IRMAO")
-	private Integer tipoIrmao;
-	
+
 	/*
 	 * Construtores Irmao
 	 */
 
 	public Irmao(){}
 	
-	public Irmao(Integer id, String nome, String igreja, boolean crente, TipoIrmao tipoIrmao){
+	public Irmao(Integer id, String nome, String igreja, boolean crente){
 		this.id = id;
 		this.nome = nome;
 		this.igreja = igreja;
 		this.crente = crente;
-		this.tipoIrmao = tipoIrmao.getCod();
+		
 	}
 	
 	@Override
@@ -107,14 +103,6 @@ public class Irmao implements Serializable{
 
 	public void setCrente(boolean crente) {
 		this.crente = crente;
-	}
-
-	public Integer getTipoIrmao() {
-		return tipoIrmao;
-	}
-
-	public void setTipoIrmao(Integer tipoIrmao) {
-		this.tipoIrmao = tipoIrmao;
 	}
 
 	public Integer getId() {

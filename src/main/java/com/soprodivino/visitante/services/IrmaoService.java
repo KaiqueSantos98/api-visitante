@@ -1,5 +1,6 @@
 package com.soprodivino.visitante.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.ObjectNotFoundException;
@@ -20,5 +21,30 @@ public class IrmaoService {
 		
 		return irmao.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Irmao.class.getName(), null));
+	}
+	
+	public List<Irmao> getAll() {
+		List<Irmao> irmaos = irmaoRepository.findAll();
+		return irmaos;
+	}
+	
+	public boolean save(List<Irmao> irmaos) {
+		try {
+			irmaoRepository.saveAll(irmaos);			
+			return Boolean.TRUE;
+		}catch(Exception e) {
+			return Boolean.FALSE;
+		}	
+		
+	}
+	
+	public boolean saveOne(Irmao irmao) {
+		try {
+			irmaoRepository.save(irmao);			
+			return Boolean.TRUE;
+		}catch(Exception e) {
+			return Boolean.FALSE;
+		}	
+		
 	}
 }
